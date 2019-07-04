@@ -1,7 +1,7 @@
 #import "SEGHTTPClient.h"
 #import "NSData+SEGGZIP.h"
 #import "SEGAnalyticsUtils.h"
-#import "CustomConfig.h"
+#import "SEGAnalyticsCustomConfig.h"
 
 
 @implementation SEGHTTPClient
@@ -72,7 +72,7 @@
     //    batch = SEGCoerceDictionary(batch);
     NSURLSession *session = [self sessionForWriteKey:writeKey];
 
-    NSURL *url = [[CustomConfig.sharedInstance getSegmentApiBase] URLByAppendingPathComponent:@"batch"];
+    NSURL *url = [[SEGAnalyticsCustomConfig.sharedInstance getSegmentApiBase] URLByAppendingPathComponent:@"batch"];
     NSMutableURLRequest *request = self.requestFactory(url);
 
     // This is a workaround for an IOS 8.3 bug that causes Content-Type to be incorrectly set
@@ -141,7 +141,7 @@
 {
     NSURLSession *session = self.genericSession;
 
-    NSURL *url = [[CustomConfig.sharedInstance getSegmentCDNBase] URLByAppendingPathComponent:[NSString stringWithFormat:@"/projects/%@/settings", writeKey]];
+    NSURL *url = [[SEGAnalyticsCustomConfig.sharedInstance getSegmentCDNBase] URLByAppendingPathComponent:[NSString stringWithFormat:@"/projects/%@/settings", writeKey]];
     NSMutableURLRequest *request = self.requestFactory(url);
     [request setHTTPMethod:@"GET"];
 
@@ -178,7 +178,7 @@
 {
     NSURLSession *session = [self sessionForWriteKey:writeKey];
 
-    NSURL *url = [[CustomConfig.sharedInstance getMobileServiceBase] URLByAppendingPathComponent:@"/attribution"];
+    NSURL *url = [[SEGAnalyticsCustomConfig.sharedInstance getMobileServiceBase] URLByAppendingPathComponent:@"/attribution"];
     NSMutableURLRequest *request = self.requestFactory(url);
     [request setHTTPMethod:@"POST"];
 

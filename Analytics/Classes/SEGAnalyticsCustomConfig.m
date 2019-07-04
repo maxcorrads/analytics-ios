@@ -1,14 +1,14 @@
 //
-//  CustomConfig.m
+//  SEGAnalyticsCustomConfig.m
 //  Analytics
 //
 //  Created by Matteo Corradin on 04/07/2019.
 //  Copyright © 2019 Segment. All rights reserved.
 //
 
-#import "CustomConfig.h"
+#import "SEGAnalyticsCustomConfig.h"
 
-@implementation CustomConfig
+@implementation SEGAnalyticsCustomConfig
 + (instancetype)sharedInstance {
     static id sharedInstance = nil;
     

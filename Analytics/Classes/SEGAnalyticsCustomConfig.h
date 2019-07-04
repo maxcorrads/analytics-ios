@@ -1,5 +1,5 @@
 //
-//  CustomConfig.h
+//  SEGAnalyticsCustomConfig.h
 //  Analytics
 //
 //  Created by Matteo Corradin on 04/07/2019.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CustomConfig : NSObject
-@property (class, nonatomic, strong, readonly) CustomConfig *sharedInstance;
+@interface SEGAnalyticsCustomConfig : NSObject
+@property (class, nonatomic, strong, readonly) SEGAnalyticsCustomConfig *sharedInstance;
 
 - (void) setSegmentApiBase:(NSString*) url;
 - (void) setSegmentCDNBase:(NSString*) url;
