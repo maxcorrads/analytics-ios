@@ -1,6 +1,7 @@
 #import "SEGHTTPClient.h"
 #import "NSData+SEGGZIP.h"
 #import "SEGAnalyticsUtils.h"
+#import "CustomConfig.h"
 
 
 @implementation SEGHTTPClient
@@ -71,7 +72,7 @@
     //    batch = SEGCoerceDictionary(batch);
     NSURLSession *session = [self sessionForWriteKey:writeKey];
 
-    NSURL *url = [SEGMENT_API_BASE URLByAppendingPathComponent:@"batch"];
+    NSURL *url = [[CustomConfig.sharedInstance getSegmentApiBase] URLByAppendingPathComponent:@"batch"];
     NSMutableURLRequest *request = self.requestFactory(url);
 
     // This is a workaround for an IOS 8.3 bug that causes Content-Type to be incorrectly set
@@ -140,7 +141,7 @@
 {
     NSURLSession *session = self.genericSession;
 
-    NSURL *url = [SEGMENT_CDN_BASE URLByAppendingPathComponent:[NSString stringWithFormat:@"/projects/%@/settings", writeKey]];
+    NSURL *url = [[CustomConfig.sharedInstance getSegmentCDNBase] URLByAppendingPathComponent:[NSString stringWithFormat:@"/projects/%@/settings", writeKey]];
     NSMutableURLRequest *request = self.requestFactory(url);
     [request setHTTPMethod:@"GET"];
 
@@ -177,7 +178,7 @@
 {
     NSURLSession *session = [self sessionForWriteKey:writeKey];
 
-    NSURL *url = [MOBILE_SERVICE_BASE URLByAppendingPathComponent:@"/attribution"];
+    NSURL *url = [[CustomConfig.sharedInstance getMobileServiceBase] URLByAppendingPathComponent:@"/attribution"];
     NSMutableURLRequest *request = self.requestFactory(url);
     [request setHTTPMethod:@"POST"];
 

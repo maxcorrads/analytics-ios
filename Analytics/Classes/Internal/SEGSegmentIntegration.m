@@ -7,6 +7,7 @@
 #import "SEGReachability.h"
 #import "SEGHTTPClient.h"
 #import "SEGStorage.h"
+#import "CustomConfig.h"
 
 #if TARGET_OS_IOS
 #import <CoreTelephony/CTCarrier.h>
@@ -82,7 +83,7 @@ static BOOL GetAdTrackingEnabled()
         self.configuration = analytics.configuration;
         self.httpClient = httpClient;
         self.storage = storage;
-        self.apiURL = [SEGMENT_API_BASE URLByAppendingPathComponent:@"import"];
+        self.apiURL = [[CustomConfig.sharedInstance getSegmentApiBase] URLByAppendingPathComponent:@"import"];
         self.userId = [self getUserId];
         self.reachability = [SEGReachability reachabilityWithHostname:@"google.com"];
         [self.reachability startNotifier];
